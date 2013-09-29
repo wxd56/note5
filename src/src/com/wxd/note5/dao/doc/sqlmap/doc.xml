@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE sqlMap PUBLIC 
+		  "-//iBATIS.com//DTD SQL Map 2.0//EN" 
+		  "http://www.ibatis.com/dtd/sql-map-2.dtd"> 
+
+<sqlMap namespace="doc">
+	<typeAlias alias="doc" type="com.wxd.note5.model.doc.Document"/>
+	<typeAlias alias="history" type="com.wxd.note5.model.doc.OpenDocHistory"/>
+	 
+	 <resultMap class="doc" id="docResult">
+	 	<result property="category.id"  column="category"/>
+	 	<result property="id"  column="id"/>
+	 	<result property="title"  column="title"/>
+	 	<result property="content"  column="content"/>
+	 	<result property="createDate"  column="createDate"/>
+	 	<result property="lastModify"  column="lastModify"/>
+	 </resultMap>
+	 
+	 <insert id="createDoc" parameterClass="doc">
+	 	  insert into doc(id,title,content,category,createDate,lastModify)
+	 	   values(#id#,#title#,#content#,#category.id#,#createDate#,#lastModify#)
+	 </insert>
+	 
+	 <delete id="deleteDoc" parameterClass="string">
+	 	delete from doc where id=#id#
+	 </delete>
+ 
+ 	<update id="updateDoc"  parameterClass="doc">
+ 		update  doc  set title = #title#,
+ 		content = #content#,
+ 		lastmodify = #lastModify#,
+ 		category = #category.id# 
+ 		 where id=#id#
+ 	</update>
+ 	
+ 	<select id="listDoc" parameterClass="string"   resultMap="docResult">
+ 		select * from doc  where category = #id#
+ 	</select>
+ 	
+ 	<select id="listDocCount" parameterClass="string"   resultClass="int">
+ 		select count(*) from doc  where category = #id#
+ 		
+ 	</select>
+ 	
+ 	<select id="getByID"   parameterClass="string" resultMap="docResult">
+ 		select * from  doc where id=#id#
+ 	</select>
+ 	
+ 	<select id="getHistoryList"  resultClass="history">
+ 			SELECT * FROM optHistory  order by  lastAccess
+ 	</select>
+ 	
+ 	<insert id="insertHistory" parameterClass="history">
+ 		insert into optHistory(categoryID,docID ,docName ,count ,lastAccess ,sortOrder ) 
+ 		values(#categoryID#,#docID# ,#docName# ,#count# ,#lastAccess# ,#sortOrder# )
+ 	</insert>
+ 	
+ 	<update id="updateHistoryByDocID"  parameterClass="history">
+ 		update optHistory  set count = #count# ,lastAccess = #lastAccess# ,sortOrder =#sortOrder#, docName = #docName#
+ 		 where     docID = #docID#
+ 	</update>
+ 	
+ 	<select id="findByCategoryID"   parameterClass="string"  resultClass="history">
+ 		SELECT * FROM optHistory where categoryID =#id#  and docID = 'NONE'
+ 	</select>
+ 	
+ 	<select id="findByDocID"   parameterClass="string"  resultClass="history">
+ 		SELECT * FROM optHistory where docID = #id#
+ 	</select>
+ 	
+ 	<update id="updateHistoryByCategoryID"  parameterClass="history">
+ 		update optHistory  set count = #count# ,lastAccess = #lastAccess# ,sortOrder = #sortOrder# where categoryID = #categoryID#  and docID = 'NONE
+ 	</update>
+ 
+</sqlMap>

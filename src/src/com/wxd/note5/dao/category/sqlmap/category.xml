@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE sqlMap PUBLIC 
+		  "-//iBATIS.com//DTD SQL Map 2.0//EN" 
+		  "http://www.ibatis.com/dtd/sql-map-2.dtd"> 
+
+<sqlMap namespace="category">
+	<typeAlias alias="category" type="com.wxd.note5.model.category.Category"/>
+	 
+	 <insert id="createCategory" parameterClass="category">
+	 	 insert into category(id,parentID,name,createDate,lastModify)
+	 	 values(#id#,#parentID#,#name#,#createDate#,#lastModify#)
+	 </insert>
+	 
+	 <select id="findById" parameterClass="string" resultClass="category">
+	 	select * from category where id=#id#
+	 </select>
+	 
+	 <update id="update" parameterClass="map">
+	 	update category set  
+	 		
+	 		<dynamic prepend="   ">
+	 			<isNotNull property="parent"  prepend="">
+	 				parentID =#parent# 
+	 			</isNotNull>
+	 			<isNotNull property="name">
+	 				name =#name# 
+	 			</isNotNull>
+	 		</dynamic>
+	 	where id=#id#
+	 </update>
+	 
+	 <select id="listCategory" parameterClass="string" resultClass="category">
+	 		select * from category where  parentID = #id#  order by name asc
+	 </select>
+ 
+</sqlMap>

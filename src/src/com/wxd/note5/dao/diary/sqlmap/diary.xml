@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE sqlMap PUBLIC 
+		  "-//iBATIS.com//DTD SQL Map 2.0//EN" 
+		  "http://www.ibatis.com/dtd/sql-map-2.dtd"> 
+
+<sqlMap namespace="diary">
+	<typeAlias alias="diary" type="com.wxd.note5.model.diary.Diary"/>
+	 
+	 <select id="getList"  resultClass="diary"  parameterClass="map">
+	 	select * from diary order by diaryOn desc 
+	 </select>
+	 
+	 <select id="getListCount"  resultClass="int"  parameterClass="map">
+	 	select count(*)  from diary
+	 </select>
+	 
+	 <insert id="insertDiary"  parameterClass="diary">
+	 	insert into diary (title,content,createDate,lastModify,diaryOn)
+	 	values(#title#,#content#,#createDate#,#lastModify#,#diaryOn#)
+	 </insert>
+	 
+	 <select id="getById"  parameterClass="int"  resultClass="diary">
+	 	select * from diary where id = #id#
+	 </select>
+	 
+	 <update id="updateDiary" parameterClass="diary">
+	 	update diary set content = #content# , title = #title#,lastModify = #lastModify# , diaryOn=#diaryOn#
+	 	where id = #id#
+	 </update>
+
+	<delete id="delete"  parameterClass="int">
+		delete from diary where id=#id#
+	</delete>
+</sqlMap>

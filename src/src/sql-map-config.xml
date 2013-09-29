@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMapConfig PUBLIC 
+		  "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+		  "http://www.ibatis.com/dtd/sql-map-config-2.dtd">
+
+<!-- 数据库的配置集合 -->
+<sqlMapConfig>
+	 <settings useStatementNamespaces="true" enhancementEnabled="true"   maxRequests="256" maxSessions="64"/>	 
+	 <sqlMap resource="com/wxd/note5/dao/diary/sqlmap/diary.xml"/> 
+	 <sqlMap resource="com/wxd/note5/dao/target/sqlmap/target.xml"/> 
+	<sqlMap resource="com/wxd/note5/dao/category/sqlmap/category.xml"/>
+	<sqlMap resource="com/wxd/note5/dao/doc/sqlmap/doc.xml"/> 
+</sqlMapConfig>

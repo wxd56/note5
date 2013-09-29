@@ -1,0 +1,152 @@
+
+/** 页面中包含所有内容的最外层表格，用于布局*/
+.bodyTable {
+	width: 100%;
+	height: 573px;
+	border-collapse: collapse;
+	padding: 0;
+	margin: 0;
+}
+
+.bodyTable tr td{
+	margin:0;
+	padding:0;
+}
+
+/** 面板样式*/
+td.pane {
+	padding: 0;
+	margin: 0;
+	border: 1px solid #d2d2d2;
+} 
+
+/** 面板标题*/
+.paneHeader {
+	background-color: rgb(241, 241, 241);
+	height: 25px;
+
+	color: rgb(102, 102, 102);			
+
+} 
+
+.paneBody {
+	margin: 0;
+	padding: 0;
+	height: 500px;
+	overflow: auto;	
+}
+
+/**  每日事务 */
+#dayArrangeTD {
+	width: 600px;
+	padding:0;
+	margin:0;
+}
+
+#weekArrangeTD {
+	width: 400px;
+	padding:0;
+	margin:0;
+}
+
+#monthArrangeTable{
+	margin: 0;
+	padding: 0;
+	border-collapse: collapse;
+	
+}
+
+/**  内容Item的样式 */
+.itemContent1 {
+	width: 95%;
+	word-break: break-all;
+	padding-left:5px;
+}
+
+.itemContent2 {
+	vertical-align: text-top;
+	text-align: left;
+}
+
+.itemTable {
+	width: 100%;
+	padding: 0;
+	margin-top: 14px;
+	border-collapse: collapse;
+}
+
+.itemTable td {
+	padding-top: 6px;
+	padding-left: 12px;
+}
+
+.toolBoxMenu {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	background-color: rgb(241, 241, 241);
+	border: 1px solid rgb(241, 241, 241);
+	display: none;
+	margin-left: -60px;		
+}
+
+.toolBoxMenu li{
+	margin: 0;
+	padding:0;
+	padding: 7px 12px 3px 12px;
+}
+
+.toolBoxMenu li a {
+	
+	width: 100%;
+	display: block;
+	text-decoration: none;
+	color: black;
+	padding:0;
+}
+
+.toolBoxMenu li:hover {
+	 background-color: white;	
+}
+
+/** 输入目标的样式 */
+.addTargetTable {
+	border-collapse: collapse;
+	width: 90%;
+}
+
+ 
+
+.inputTargetTD textarea {
+	width: 90%;
+	height: 38px;
+	margin-left: 12px;
+}
+
+.button {
+	background-color: #4D90FE;
+	display: block;
+	text-decoration: none;
+	color: white;
+	border: 1px solid #3079ED;
+	font-weight: bold;
+	height: 20px;
+	width: 40px;
+	padding: 5px 1px 0 12px;
+}
+
+/** 目标已经完成*/
+.finishItem {
+	font-size: 13px;
+	font-style: italic;
+	text-decoration: line-through;
+	color: gray;
+	font-weight:bold; 
+	background-color: white;
+}
+
+.itemTR:hover {
+	background-color: rgb(241, 241, 241);
+}
+  

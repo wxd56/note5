@@ -1,0 +1,93 @@
+#docTitle{
+	 width: 300px;
+}
+
+#bodyTable{
+	width: 100%;
+	height: 576px;
+	border-collapse: collapse;
+	padding: 0;
+	margin: 0;	
+	border-bottom: 	1px solid #d2d2d2;
+}
+ 
+/**  左侧标题栏 */
+#leftColumn{
+	vertical-align:top;
+	width:200px;
+	border-right: 1px solid #d2d2d2;
+}
+
+#leftColumn a{
+	text-decoration: none;
+}
+
+.verticalULMenul{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.verticalULMenul li{
+	padding-left: 10px;
+	padding-top: 12px;
+}
+
+/**
+页面右侧的栏目
+*/
+#rightColumn{
+		vertical-align:top;
+}
+
+#listDocTable ,#editDocTable{
+	width:80%;
+	border-collapse: collapse;
+	margin: 0;
+	padding: 0;
+	float:left;
+}
+#editDocTable{
+	width:100%;
+}
+p.columTitle{
+	text-align:center;
+	margin:0;
+	padding:0;
+	background-color: rgb(241,241,241);
+	color: rgb(102, 102, 102);
+}
+
+#optHistory{
+	border-left:1px solid #d2d2d2;
+	width:19%;
+	margin: 0;
+	padding: 0;
+	float:left;
+	height:100%;
+}
+
+#listDocTable th{
+	text-align:left;
+	background-color: rgb(241,241,241);
+	color: rgb(102, 102, 102);
+	font-weight: normal;
+}
+
+#listDocTable td{
+	padding-top:8px;
+	padding-bottom:4px;
+}
+
+#listDocTable  tr:hover{
+	background-color: rgb(241,241,241);
+}
+ 
+li.item a{
+	display:block;
+	padding-bottom:5px;
+} 
+li.item:hover{
+	background-color: #A3C9DB;
+} 
+ 

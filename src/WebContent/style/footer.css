@@ -1,0 +1,17 @@
+#pageBottomHolder {
+	width: 100%;
+	margin:0;
+	padding:0;
+	border-collapse: collapse;
+}
+
+.ULMenu {
+	margin: 0;
+	padding: 0;
+	margin-right:20px;
+}
+  
+
+.ULMenu li {
+	display: inline;
+}

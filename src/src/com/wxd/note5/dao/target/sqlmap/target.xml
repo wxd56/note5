@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE sqlMap PUBLIC 
+		  "-//iBATIS.com//DTD SQL Map 2.0//EN" 
+		  "http://www.ibatis.com/dtd/sql-map-2.dtd"> 
+
+<sqlMap namespace="target">
+	<typeAlias alias="target" type="com.wxd.note5.model.target.Target"/>
+	 
+	 <insert id="saveTarget" parameterClass="target">
+	 	insert into target (content,id,beginDate,type,state,endDate)
+	 	values (#content#,#id#,#beginDate#,#type#,#state#,#endDate#)
+	 </insert>
+	 
+	 <update id="updateTargetState"  parameterClass="map">
+	 	update target set state = #state#
+	 	where id = #id#
+	 </update>
+	 
+	 <select id="findTarget"   parameterClass="map" resultClass="target">
+	 	select * from  target where type = #type# and beginDate =  #beginDate# and (state ='finished' or state='create')  
+	 </select>
+ 
+</sqlMap>
