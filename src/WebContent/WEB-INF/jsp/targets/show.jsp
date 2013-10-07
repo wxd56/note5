@@ -4,18 +4,23 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript"  src="${baseURL }script/jquery-2.0.3.js"></script>
 <script type="text/javascript" src="${baseURL }script/public.js"></script>
 <script type="text/javascript" src="${baseURL }script/target/tab.js"></script>
 <script type="text/javascript" src="${baseURL }script/target/targetV3.js"></script> 
 <script type="text/javascript" src="${baseURL }script/keyEventHandler.js"></script>
+<script type="text/javascript" src="${baseURL }script/lhgcalendar.min.js"></script>
+
 
 <link rel="stylesheet" type="text/css" 	href="${baseURL }style/target/tab.css"></link>
 <link rel="stylesheet" type="text/css" 	href="${baseURL }style/header.css"></link>
-<%-- <link rel="stylesheet" type="text/css" 	href="${baseURL }style/target/target.css"></link> --%>
 <link rel="stylesheet" type="text/css" 	href="${baseURL }style/footer.css"></link>
 
 <script type="text/javascript">
 	var ctxPath = "${baseURL}";	  
+	$(
+			 function init(){$('#inputSelectedDate').calendar();}
+	);
 </script>
 <title>目标管理系统5.0</title>
 <style>
@@ -136,8 +141,6 @@ td.pane {
 	width: 90%;
 }
 
- 
- 
 
 .inputTargetTD textarea {
 	width: 90%;
@@ -147,14 +150,15 @@ td.pane {
 
 .button {
 	background-color: #4D90FE;
-	display: block;
+	display: inline;
 	text-decoration: none;
 	color: white;
 	border: 1px solid #3079ED;
-	font-weight: bold;
 	height: 20px;
 	width: 40px;
-	padding: 5px 1px 0 12px;
+	padding:3px  8px 3px 8px;
+	font-weight: bold;
+	width:100%;
 }
 
 /** 目标已经完成*/
@@ -174,19 +178,14 @@ td.pane {
 </style>
 </head>
 <body onclick="hideToolBoxMenu()" onload="bodyLoad('${currDateTime}','${currWeek}');">
-   <!--  显示控制台 -->
-   <div id="console" class="tartgetV3Console"></div>
+  
 	<table id="headerBar">
 		<tr>
 			<td style="padding-left: 12px; padding-top: 6px;">当前选择日期：${currDateTime} &nbsp;第${currWeekOfYear }周&nbsp;${weekNames[currWeek]}</td>			
-			<td style = "text-align:right;">
-				<ul class="ULMenu">
-					<li>
-						<input style="width:70px;" type="text"  value="${currDateTime}" id="inputSelectedDate" />
-					</li>
-					<li ><a href="javascript:void(0)" style="color:white" onclick="changeSelectedDate('switch')">切换日期</a></li>
-					<li><a  href="javascript:void(0)" style="color:white" onclick="changeSelectedDate('now')">回到现在</a></li>
-				</ul>				
+			<td style="text-align: right;">
+				<input style="width:70px;" type="text"  value="${currDateTime}" id="inputSelectedDate" /> 
+				<a href="javascript:void(0)"  class="button"  onclick="changeSelectedDate('switch')">切换</a> 
+				<a  href="javascript:void(0)"  class="button" onclick="changeSelectedDate('now')">今天</a> 
 			</td>			
 		</tr>
 	</table>

@@ -87,5 +87,27 @@ function listDocByCategories(pageNo,pageSize,obj){
 	window.location.href = ctxPath + "doc/other/list.do?pageNo=" + pageNo + "&pageSize=" + pageSize + "&category=" + categoryID;
 }
 
- 
- 
+function editTitle(title){
+	$('#titleSpan').css("display","none");
+	$('#titleInput').css("display","block");
+}
+
+function saveDocTitle(){
+	$('#titleSpan').html($('#titleInput').val());
+	$('#titleSpan').css("display","block");
+	$('#titleInput').css("display","none");
+	
+	//Ajax 发送，保存标题
+	$.post( ctxPath + "doc/updateTitle.do",
+			{
+				id:$('#docID').val(),
+				title:$('#titleInput').val()
+		    },
+			function(data,status){
+				if(status == 'success'){
+					console.show("标题修改成功!");
+					console.hide(3000);
+				}
+			}
+		);
+}

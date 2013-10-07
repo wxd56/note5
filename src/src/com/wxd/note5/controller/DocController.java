@@ -2,6 +2,7 @@ package com.wxd.note5.controller;
 
 import java.util.Date;
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
  
+
 
 import com.wxd.note5.model.category.Category;
 import com.wxd.note5.model.doc.Document;
@@ -104,6 +106,19 @@ public class DocController {
 	}
 	
 	/**
+	 * 更新文档标题
+	 * 
+	 */
+	@RequestMapping("updateTitle")
+	public void updateTitle(HttpServletRequest req,HttpServletResponse resp) throws IOException{
+		String title = req.getParameter("title");
+		String id = req.getParameter("id");
+		
+		this.docManager.updateTitle(id, title);
+		resp.getWriter().print("111");
+	}
+	
+	/**
 	 * 删除
 	 * @throws Exception 
 	 */
@@ -149,8 +164,6 @@ public class DocController {
 		 
 			 id = this.docManager.newDoc(doc);
 		}else{
-			//更新
-			doc.setTitle(title);
 			doc.setContent(content.toString());
 			doc.setCategory(new Category(category));
 			
@@ -159,6 +172,20 @@ public class DocController {
 		
 		//返回id
 		resp.getWriter().print(id);
+	}
+	
+	@RequestMapping("search")
+	public String searchDocs(HttpServletRequest req){
+		String keyWords = req.getParameter("keyWords");
+		long start = System.currentTimeMillis();
+		List<Document> docs = this.docManager.searchDocs(keyWords);
+		long end = System.currentTimeMillis();
+		req.setAttribute("docs", docs);
+		
+		req.setAttribute("count", docs.size());
+		req.setAttribute("time", (end-start)/1000.0);
+		
+		return "doc/searchResult";
 	}
 
 	@Autowired

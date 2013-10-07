@@ -1,6 +1,7 @@
 package com.wxd.note5.service.doc.impl;
 
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,8 +51,6 @@ public class DocManagerImpl  implements DocManager {
 		
 		doc.setLastModify(new Date());
 		docDAO.updateDoc(doc);
-		
-	 
 	}
 
 	@Override
@@ -86,5 +85,14 @@ public class DocManagerImpl  implements DocManager {
 			d.setContent(tool.decrypt(doc.getContent()));
 		}*/
 	}
-	 
+
+	@Override
+	public void updateTitle(String id, String newTitle) {
+		this.docDAO.updateTitle(id, newTitle);
+	}
+
+	@Override
+	public List<Document> searchDocs(String title) {
+		return this.docDAO.searchDocs(title);
+	} 
 }

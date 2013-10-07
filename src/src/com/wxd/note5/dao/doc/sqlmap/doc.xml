@@ -47,7 +47,7 @@
  	</select>
  	
  	<select id="getHistoryList"  resultClass="history">
- 			SELECT * FROM optHistory  order by  lastAccess
+ 			SELECT * FROM optHistory  order by  lastAccess desc
  	</select>
  	
  	<insert id="insertHistory" parameterClass="history">
@@ -71,5 +71,13 @@
  	<update id="updateHistoryByCategoryID"  parameterClass="history">
  		update optHistory  set count = #count# ,lastAccess = #lastAccess# ,sortOrder = #sortOrder# where categoryID = #categoryID#  and docID = 'NONE
  	</update>
+ 	
+ 	<!--  更新文档Title -->
+ 	<update id="updateTitle" parameterClass="map">
+ 		update doc set   title = #title#  where id= #id# 
+ 	</update>
  
+ 	<select id="searchDocs" parameterClass="string" resultMap="docResult">
+ 		select * from doc where title like  #id#
+ 	</select>
 </sqlMap>

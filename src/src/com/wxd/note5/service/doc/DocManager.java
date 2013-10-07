@@ -1,5 +1,7 @@
 package com.wxd.note5.service.doc;
 
+import java.util.List;
+
 import com.wxd.note5.model.doc.Document;
 import com.wxd.note5.util.PaginatedResult;
 
@@ -37,4 +39,14 @@ public interface DocManager {
 	public void saveContent(Document doc) throws Exception;
 	
 	public Document getById(String docID) throws Exception;
+	
+	/**
+	 * 更新文档标题
+	 */
+	public void updateTitle(String id,String newTitle);
+	
+	/**
+	 * 根据标题模糊查询文档
+	 */
+	public  List<Document> searchDocs(String title);
 }

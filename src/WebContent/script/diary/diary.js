@@ -9,35 +9,36 @@ function saveDoc(){
 	console.show("正在保存文档....");
 	 
 	//向服务器发送保存的命令
-	var data = $("diaryContent").value;
-	var title = $("docTitle").value;
-	var id = $("diaryID").value;
+	var data = $("#diaryContent").val();
+	var title = $("#docTitle").val();
+	var id = $("#diaryID").val();
 	 
 
-   sendReqAsyn(ctxPath + "diary/save.do?id=" + id + "&title=" + encodeURI(title), data, saveCallBack);	
+   $.post(
+		   ctxPath + "diary/save.do",
+		   {
+			   'id':id,
+			   'title':title,
+			   'content':data
+		   },
+		   function(msg,status){
+			   if(status == 'success'){
+					console.show("文档保存成功！");
+					
+					//更新文档Id
+					var returnData = msg;
+					docID = returnData;					
+					console.hide(3000);
+			   }else{
+				   console.show("文档保存失败,服务器返回错误，或无法连接！");
+			   }
+		   }
+   );
 	
 	//标记“toSave”为false
 	toSave = false;
 }
-/**
- * 保存文档的的回调函数
- */
-function saveCallBack(xhr){   
-	var state =  xhr.readyState;
-	if(state == '4'){
-		if(xhr.status == 200){
-			console.show("文档保存成功！");
-			
-			//更新文档Id
-			var returnData = xhr.responseText;
-			docID = returnData;
-			
-			console.hide(3000);
-		}else{
-			console.show("文档保存失败,服务器返回错误，或无法连接！");
-		}		
-	}	
-}
+ 
 
 /**
  * 删除日志

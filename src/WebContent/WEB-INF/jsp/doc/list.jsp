@@ -5,15 +5,19 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript"  src="${baseURL }script/jquery-2.0.3.js"></script>
 
 <script type="text/javascript">
 	var ctxPath = "${baseURL}";	  
 	
-	//页面加载完毕
-	function bodyLoad(){
-		renderUeditor();
-		checkHideStateInCookie();		
-	} 
+	$(
+			//页面加载完毕
+			function (){
+				renderUeditor();
+				checkHideStateInCookie();		
+			}
+	);
+	 
 	var editor_a1;
 	function renderUeditor(){
 		var myEditor = document.getElementById("myEditor1");
@@ -54,41 +58,47 @@
 <link rel="stylesheet" type="text/css" 	href="${baseURL }style/header.css"></link>
 <link rel="stylesheet" type="text/css" 	href="${baseURL }style/doc/doc.css"></link>
 <link rel="stylesheet" href="${baseURL }ueditor/themes/default/ueditor.css"/>
- 
 
 <title>文档管理系统3.0</title>
 </head>
-<body onload="bodyLoad();"  >
-   <!--  显示控制台 -->
-   <div id="console" ></div>
+<body >
+	<form>
+		<input type="hidden" name="docID" id="docID"  value="${document.id }">
+	</form>
+   
 	<table id="headerBar">
 		<tr>
-			<td style="padding-left: 12px; padding-top: 6px;width: 500px;">
-				<a href="${baseURL }doc/show.do">文档分类</a>
-				<c:forEach items="${parentList }" var="category" > 
-						-><a href="${baseURL }doc/show.do?categoryId=${category.id}">${category.name }</a>										
-				</c:forEach>				
-			</td>			
-			<td style="text-align: center;">
-				<c:if  test="${docId != null }">
-					标题：<input name="docTitle"  id="docTitle" value="${document.title }"/>
-				</c:if> 				
-			</td>
-			<td style = "text-align:right;">
-				<ul class="ULMenu"> 
-					<li ><a href="javascript:void(0)" style="color:white" onclick="newDoc('${selectedCategoryId}')">新建文档</a></li>
+			<td >
+				<ul id="navBar">
+					<li><a href="${baseURL }doc/show.do">文档分类</a></li>
+					<c:forEach items="${parentList }" var="category" > 
+							<li><a href="${baseURL }doc/show.do?categoryId=${category.id}">${category.name }</a></li>										
+					</c:forEach>
+					 	<c:if  test="${docId != null }">
+							<li>
+								<span   id="titleSpan" onclick="editTitle('${document.title }')"  >${document.title }</span>	
+								<input  onblur="saveDocTitle()" style="display:none;"  name="docTitle"  id="titleInput"  value='${document.title }' />						
+							</li>
+						</c:if> 	
+						<li style="width:100px;">&nbsp;</li>
+							<li onclick="newDoc('${selectedCategoryId}')"  class="button" style="color:white"> 新建 </li>
 					<c:if  test="${docId != null }">
-						<li><a  href="javascript:void(0)" style="color:white" onclick="saveDoc('${selectedCategoryId}','${document.id}')">保存文档</a></li>
+						<li onclick="saveDoc('${selectedCategoryId}','${document.id}')" class="button" style="color:white">保存 </li>
 					</c:if>
 					<c:if  test="${docId != null }">
-						<li><a  href="javascript:void(0)" style="color:white" onclick="deleteDoc('${selectedCategoryId}','${document.id}')">删除文档</a></li>
-					</c:if>						
-				</ul>				
+						<li   onclick="deleteDoc('${selectedCategoryId}','${document.id}')" class="button" style="color:white">删除 </li>
+					</c:if>	
+					<li>
+						<form id="searchForm"  action="${baseURL }doc/search.do" method="post">
+							<input name="keyWords" type="text"  style="width:300px;" placeholder="输入文档标题进行搜索"/>
+						</form>
+					</li>
+				</ul>		
 			</td>			
 		</tr>
 	</table>
 
-	<table id="bodyTable">
+	<table id="bodyTable" style="margin-top: 38px;">
 		 <tr>
 		 	<c:if  test="${docId == null }">
 		 	<td id="leftColumn">

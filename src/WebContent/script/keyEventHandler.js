@@ -8,6 +8,10 @@ function keyEventHandler() {
 		if(event.keyCode == 83){
 			//ctrl + s
 			event.preventDefault();
+			if(handler_ctrl_s !== null){
+				handler_ctrl_s();
+			}
+			
 		}
 		
 		if(event.keyCode == 72){

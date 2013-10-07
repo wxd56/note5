@@ -1,5 +1,7 @@
 package com.wxd.note5.dao.doc;
 
+import java.util.List;
+
 import com.wxd.note5.model.doc.Document;
 import com.wxd.note5.util.PaginatedResult;
  
@@ -19,4 +21,14 @@ public interface  DocDAO {
 	public PaginatedResult<Document> listDoc(int pageSize,int pageNo,String category);
 	
 	public Document getByID(String id);	
+	
+	/**
+	 * 更新文档标题
+	 */
+	public void updateTitle(String id,String newTitle);
+	
+	/**
+	 * 根据标题模糊查询文档
+	 */
+	public  List<Document> searchDocs(String title);
 }

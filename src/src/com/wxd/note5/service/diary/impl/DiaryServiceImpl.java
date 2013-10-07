@@ -79,7 +79,7 @@ public class DiaryServiceImpl  implements DiaryService{
 		StringBuffer buf = new StringBuffer();
 		buf.append(c.get(Calendar.YEAR));
 		buf.append("年");
-		buf.append(c.get(Calendar.MONTH));
+		buf.append(c.get(Calendar.MONTH)+1);
 		buf.append("月");
 		buf.append(c.get(Calendar.DATE));
 		buf.append("日 ");
@@ -136,4 +136,5 @@ public class DiaryServiceImpl  implements DiaryService{
 	public void deleteDiary(int id) {
 		this.diaryDAO.deleteDiary(id);
 	} 
+	
 }

@@ -20,8 +20,6 @@
 <title>分类管理</title>
 </head>
 <body onload="pageLoad()">
-  <!--  显示控制台 -->
-   <div id="console" ></div>
    	<table id="headerBar">
 		<tr>
 			<td style="padding-left: 12px; padding-top: 6px;width: 500px;"> 				

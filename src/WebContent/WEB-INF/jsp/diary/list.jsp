@@ -5,15 +5,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<script type="text/javascript"  src="${baseURL }script/jquery-2.0.3.js"></script>
 <script type="text/javascript">
 	var ctxPath = "${baseURL}";	  
-	var diaryID = ${targetDiary.id}
+	var diaryID = "${targetDiary.id}";
 	
-	//页面加载完毕
-	function bodyLoad(){  
-		checkHideStateInCookie();		
-	}  
+	$(
+		function (){  
+			checkHideStateInCookie();		
+		}  
+	);
+	
+	function handler_ctrl_s(){
+		saveDoc();
+	}
 </script>
 
 <script type="text/javascript" src="${baseURL }script/public.js"></script>
@@ -25,11 +30,10 @@
 <link rel="stylesheet" type="text/css" 	href="${baseURL }style/header.css"></link>
 <link rel="stylesheet" type="text/css" 	href="${baseURL }style/diary/diary.css"></link> 
 <title>日志系统5.0</title>
+
 </head>
-<body onload="bodyLoad();"  >
-   <!--  显示控制台 -->
-   <div id="console" ></div>
-	<table id="headerBar">
+<body >
+	<table id="headerBar" style="border:1px solid  #777">
 		<tr>
 			<td style="padding-left: 12px; padding-top: 6px;width: 500px;">
 				<a href="${baseURL }diary/list.do">日志列表</a>
@@ -41,19 +45,17 @@
 			</td>
 			<td style = "text-align:right;">
 				<ul class="ULMenu"> 
-					<li ><a href="newDiary.do" style="color:white" >新建 </a></li>
+					<li ><a href="newDiary.do"   >新建 </a></li>
 					 
-						<li><a  href="javascript:void(0)" style="color:white" onclick="saveDoc('${selectedCategoryId}','${document.id}')">保存 </a></li>
-				 
-				 
-						<li><a  href="javascript:void(0)" style="color:white" onclick="deleteDiary()">删除 </a></li>
+						<li><a  href="javascript:void(0)"  onclick="saveDoc()">保存 </a></li>
+						<li><a  href="javascript:void(0)"   onclick="deleteDiary()">删除 </a></li>
 				 			
 				</ul>				
 			</td>			
 		</tr>
 	</table>
 
-	<table id="bodyTable">
+	<table id="bodyTable" style="margin-top:16px;">
 		<tr>
 
 			<td id="leftColumn">
@@ -86,7 +88,7 @@
 				<table id="editDocTable">
 					<tr>
 						<td style="padding: 0;margin:0;">
-								<textarea id="diaryContent"  rows="18" style="width: 97%; height: 97%;">${targetDiary.plainText }</textarea>
+								<textarea id="diaryContent"  rows="18" style="width: 97%; height: 99%;">${targetDiary.plainText }</textarea>
 						</td>
 					</tr>
 				</table>

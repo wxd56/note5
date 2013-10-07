@@ -1,7 +1,5 @@
 package com.wxd.note5.controller;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.util.Date;
 import java.util.logging.Logger;
 
@@ -65,22 +63,9 @@ public class DiaryController {
 	@RequestMapping("save.do")
 	public void  saveDiary(HttpServletRequest req ,HttpServletResponse resp) throws NumberFormatException, Exception{
 		String id =   req.getParameter("id");
-		
-	 
 		String title  = req.getParameter("title");
+		String content = req.getParameter("content"); 
 		 
-		
-		//得到保存的内容
-		StringBuffer content = new StringBuffer();
-		BufferedReader reader = new BufferedReader(new InputStreamReader(req.getInputStream(),"utf-8"));
-		String line = reader.readLine();
-		while(line != null){
-			content.append(line);
-			line = reader.readLine();
-			if(line != null){
-				content.append("\n");
-			}
-		}
 		
 		Diary diary = this.diaryService.getDiaryById(Integer.parseInt(id));
 		diary.setPlainText(content.toString());

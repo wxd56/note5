@@ -1,6 +1,4 @@
-#docTitle{
-	 width: 300px;
-}
+ 
 
 #bodyTable{
 	width: 100%;
@@ -9,6 +7,7 @@
 	padding: 0;
 	margin: 0;	
 	border-bottom: 	1px solid #d2d2d2;
+	margin-top: 30px;
 }
  
 /**  ×ó²à±êÌâÀ¸ */
@@ -90,4 +89,17 @@ li.item a{
 li.item:hover{
 	background-color: #A3C9DB;
 } 
+
+.button {
+	vertical-align:middle;
+	background-color: #4D90FE;
+	display: inline;
+	color: white;
+	border: 1px solid #3079ED;
+	height: 25px;
+	width: 40px;
+	
+}
+
+
  

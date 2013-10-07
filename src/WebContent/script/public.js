@@ -1,8 +1,4 @@
-var $ = function(id){
-	return document.getElementById(id);
-};
  
-
 /**
  * 向服务器发送请求，同步请求，直到服务器返回数据后才会结束
  * @param url	服务器的地址
@@ -58,29 +54,32 @@ function submit(objID){
 /**
  * 代表控制台的对象
  */
+$(
+		function (){
+			$("<div/>").attr("id","console").appendTo($('body')[0]);
+		}
+);
 var console = {
 		width:300,
 		content:'',
 		show:function(param){
-			$('console').style.display="block";
+			$("#console").css("display","block");
 			if(param == null){
-				$('console').innerHTML = this.content;
+				$("#console").html( this.content);
 			}else{
-				$('console').innerHTML = param;
+				$('#console').html(param);
 			}
 		},
 		hide:function(delay){
 			if(delay == null){
-				$('console').style.display="none";
+				$('#console').css('display',"none");
 			}else{
 				//延时隐藏
-				setTimeout(function(){$('console').style.display="none";}, delay);
-			}			
+				setTimeout(function(){
+					$('#console').css('display',"none");
+				}, delay);
+			}		
 		}
 };
 
 var isChanaged = true;
-
-
-
-

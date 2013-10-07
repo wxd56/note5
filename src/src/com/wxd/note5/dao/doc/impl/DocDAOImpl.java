@@ -1,9 +1,16 @@
 package com.wxd.note5.dao.doc.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Repository;
  
+
+
+
+
+
 
 import com.wxd.note5.dao.DaoBase;
 import com.wxd.note5.dao.doc.DocDAO;
@@ -37,6 +44,7 @@ public class DocDAOImpl extends DaoBase implements DocDAO{
 		result.setPageNo(pageNo);
 		result.setPageSize(pageSize);
 		
+		@SuppressWarnings("unchecked")
 		List<Document> list = getSqlMapClient().queryForList("doc.listDoc", category, (pageNo-1)*pageSize,pageSize);
 		result.setResult(list);
 		
@@ -51,5 +59,21 @@ public class DocDAOImpl extends DaoBase implements DocDAO{
 	@Override
 	public Document getByID(String id) {
 		return (Document) getSqlMapClient().queryForObject("doc.getByID",id);
+	}
+
+	@Override
+	public void updateTitle(String id, String newTitle) {
+		Map< String, Object> map = new HashMap<String, Object>();
+		map.put("id", id);
+		map.put("title", newTitle);
+		
+		this.getSqlMapClient().update("doc.updateTitle",map);
+	}
+
+	
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<Document> searchDocs(String title) {
+		 return getSqlMapClient().queryForList("doc.searchDocs","%"+title+"%");
 	}
 }
