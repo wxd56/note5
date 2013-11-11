@@ -9,7 +9,7 @@
 </head>
 <body > 
  	<script>
- 		window.location.href="../diary/list.do";
+ 		window.location.href="../doc/show.do";
  	</script>
 </body>
 </html>

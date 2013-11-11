@@ -90,6 +90,7 @@ function listDocByCategories(pageNo,pageSize,obj){
 function editTitle(title){
 	$('#titleSpan').css("display","none");
 	$('#titleInput').css("display","block");
+	$('#titleInput').focus();
 }
 
 function saveDocTitle(){

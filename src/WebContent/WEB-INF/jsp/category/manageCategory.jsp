@@ -3,12 +3,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript"  src="${baseURL }script/jquery-2.0.3.js"></script>
 <script type="text/javascript">
 	var ctxPath = "${baseURL}";
 </script>
 
 <script type="text/javascript" src="${baseURL }script/public.js"></script>
-<script type="text/javascript" src="${baseURL }/script/wb/json.js"></script>
+
 <script type="text/javascript" src="${baseURL }/script/category/category.js"></script>
 <script src="${baseURL }script/tree/dhtmlxcommon.js"></script>
 <script src="${baseURL }script/tree/dhtmlxtree.js"></script>
@@ -20,7 +21,7 @@
 <title>分类管理</title>
 </head>
 <body onload="pageLoad()">
-   	<table id="headerBar">
+   	<table id="headerBar" >
 		<tr>
 			<td style="padding-left: 12px; padding-top: 6px;width: 500px;"> 				
 				在当前分类<span id="selectedCategorySpan"  style="font-weight: bold;" >文档分类</span>下
@@ -33,7 +34,7 @@
 			</td>						
 		</tr>
 	</table>	  
-	<div id="bodyContainer" style="margin:0;padding:0;border-bottom: 	1px solid #d2d2d2;padding-top:12px;">
+	<div id="bodyContainer" style="margin:50px;padding:0;border-bottom: 	1px solid #d2d2d2;padding-top:12px;">
       <div id="treeBox" style="width: 300px; height: 560px; padding:0;margin:0"></div>					
 	</div>		 
 		<%@include file="../common/footer.jsp"%>

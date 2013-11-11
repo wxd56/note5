@@ -1,13 +1,10 @@
- 
-
-#bodyTable{
+ #bodyTable{
 	width: 100%;
-	height: 576px;
+	
 	border-collapse: collapse;
 	padding: 0;
 	margin: 0;	
-	border-bottom: 	1px solid #d2d2d2;
-	margin-top: 30px;
+	border-bottom: 	1px solid #d2d2d2;	
 }
  
 /**  ×ó²à±êÌâÀ¸ */
@@ -97,9 +94,5 @@ li.item:hover{
 	color: white;
 	border: 1px solid #3079ED;
 	height: 25px;
-	width: 40px;
-	
+	width: 40px;	
 }
-
-
- 

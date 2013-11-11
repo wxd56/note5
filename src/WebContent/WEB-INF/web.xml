@@ -51,4 +51,9 @@
     <filter-name>SecurityFilter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
+  
+  <session-config>
+  	<session-timeout>240</session-timeout>
+  </session-config>
+  
 </web-app>

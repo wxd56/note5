@@ -8,6 +8,9 @@ function pageLoad(){
 	
 	//初始化根节点
 	tree.insertNewChild(0, "null", "文档分类", 0, 0, 0, 0,	"TOP,CHILD,CHECKED");	
+	
+	//列出一级分类
+	//getDateFromServer(0);
 }
 
 /**
@@ -29,18 +32,20 @@ function dragCallBack(xml){
 /**
  * 添加分类
  */
-function addCategory(){
+function addCategory(itemID){
 	
 	//获得父分类的ID
 	var id = tree.getSelectedItemId();
-	var name = $("add_cate_name").value;
+	if(itemID !== null) id = itemID;
+	
+	var name = $("#add_cate_name").val();
 	var url = ctxPath + "category/addCateogry.do?"  + "parent=" + id ;
 	
 	//向服务器发送请求，返回添加的类别的Id
 	var addedID = sendReqSync(url, name);
 	
 	//清空输入框
-	$("add_cate_name").value = "";
+	$("#add_cate_name").val("");
 	
 	//添加到树中
 	insertNode(id,name,addedID);
@@ -58,7 +63,7 @@ function insertNode(parentID,text,data){
 function listCategores(nodeID){	
 	//如果已经打开，则直接返回
 	 var state = tree.getOpenState(nodeID);
-	 if(state == 1) return;
+	 if(state == 1 && nodeID != 0) return;
 	
 	 var categoryId = nodeID;	 
 	var url = ctxPath + "category/list.do?parent=" + categoryId ;
@@ -104,13 +109,14 @@ function renameCategory(){
 /**
  * 某个节点点击时的处理函数
  */
-function getDateFromServer(){
+function getDateFromServer(itemID){
 	//获得父分类的ID
 	var id = tree.getSelectedItemId();
+	if(itemID !== null) id = itemID;
 	
 	//设置重命名的输入框中的名称
-	$('selectedCategory').value = tree.getSelectedItemText(id);
-	$('selectedCategorySpan').innerHTML = tree.getSelectedItemText(id);
+	$('#selectedCategory').val( tree.getSelectedItemText(id));
+	$('#selectedCategorySpan').text( tree.getSelectedItemText(id));
 	
 	//发送消息
 	listCategores(id);	

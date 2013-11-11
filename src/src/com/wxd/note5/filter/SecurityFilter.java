@@ -62,8 +62,7 @@ public class SecurityFilter implements Filter {
 				chain.doFilter(request, response);
 			}else{
 				//返回404错误
-				httpResp.setStatus(404);
-				//chain.doFilter(request, response); //delete me
+				httpResp.setStatus(404);			
 			}
 			
 		}else{

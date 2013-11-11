@@ -4,15 +4,13 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" " http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
+<script type="text/javascript"  src="${baseURL }script/jquery-2.0.3.js"></script>
 <title>Note5</title> 
   <style type="text/css">
   	#container{
   		width: 100%;
-  		height: 100%;
-  		
+  		height: 100%;  		
   		text-align: center;
-  		 
-  		
   	}
   	
   	#formTable{
@@ -27,6 +25,12 @@
   		width:120px;
   	}
   </style>
+  <script type="text/javascript">
+ $(function(){
+  		$("#password")[0].focus();
+  	}
+  );
+  </script>
 </head>
 <body > 
 	<div id="container">

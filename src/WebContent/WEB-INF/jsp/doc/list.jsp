@@ -26,7 +26,7 @@
 		}
 		editor_a1 = new baidu.editor.ui.Editor();
 	    editor_a1.render( 'myEditor1' );         
-	    editor_a1.setHeight(555);									        
+	    editor_a1.setHeight(500);									        
 	    editor_a1.addListener("keydown",function(type, evt){
 	        	//保存
 	        	if(evt.ctrlKey && evt.keyCode == 83){     
@@ -65,11 +65,9 @@
 	<form>
 		<input type="hidden" name="docID" id="docID"  value="${document.id }">
 	</form>
-   
-	<table id="headerBar">
-		<tr>
-			<td >
-				<ul id="navBar">
+		
+
+	<ul id="navBar">
 					<li><a href="${baseURL }doc/show.do">文档分类</a></li>
 					<c:forEach items="${parentList }" var="category" > 
 							<li><a href="${baseURL }doc/show.do?categoryId=${category.id}">${category.name }</a></li>										
@@ -93,12 +91,10 @@
 							<input name="keyWords" type="text"  style="width:300px;" placeholder="输入文档标题进行搜索"/>
 						</form>
 					</li>
-				</ul>		
-			</td>			
-		</tr>
-	</table>
+</ul>		
+	
 
-	<table id="bodyTable" style="margin-top: 38px;">
+	<table id="bodyTable" >
 		 <tr>
 		 	<c:if  test="${docId == null }">
 		 	<td id="leftColumn">
